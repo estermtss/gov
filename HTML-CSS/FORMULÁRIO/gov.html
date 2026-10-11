@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gov.br - Entrar na sua conta</title>
+    
+    <!-- CSS INTEGRADO DENTRO DO HTML -->
+    <style>
+        /* Configuração global e reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: #f2f4f7;
+            color: #1f2937;
+        }
+
+        /* --- TOPO (HEADER) --- */
+        .topo-gov {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 14px 40px;
+            width: 100%;
+        }
+
+        .container-topo {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: -1.5px;
+        }
+
+        .logo-gov {
+            color: #000000;
+        }
+
+        .logo-br {
+            color: #1351b4;
+        }
+
+        .menu-topo {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .menu-topo a {
+            text-decoration: none;
+            color: #374151;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .menu-topo a.ativo {
+            color: #1351b4;
+            border-bottom: 2px solid #1351b4;
+            padding-bottom: 2px;
+        }
+
+        .menu-topo a:hover {
+            color: #1351b4;
+        }
+
+        /* --- CONTEÚDO PRINCIPAL --- */
+        .conteudo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 70px);
+            padding: 20px;
+        }
+
+        /* Cartão Branco Central */
+        .cartao-login {
+            background-color: #ffffff;
+            padding: 48px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+            width: 100%;
+            max-width: 820px;
+        }
+
+        .cartao-login h1 {
+            font-size: 26px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 6px;
+        }
+
+        .subtitulo {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 36px;
+        }
+
+        /* --- LAYOUT DE DUAS COLUNAS --- */
+        .colunas-login {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        .coluna-esquerda {
+            flex: 1;
+        }
+
+        .coluna-direita {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            padding-top: 5px;
+        }
+
+        /* Linha divisória vertical entre as colunas */
+        .divisor {
+            width: 1px;
+            background-color: #e5e7eb;
+            align-self: stretch;
+        }
+
+        /* --- FORMULÁRIO (CPF) --- */
+        .coluna-esquerda label {
+            display: block;
+            font-size: 14px;
+            font-weight: 700;
+            color: #374151;
+            margin-bottom: 8px;
+        }
+
+        .input-grupo {
+            display: flex;
+            align-items: center;
+            border: 1px solid #9ca3af;
+            border-radius: 6px;
+            overflow: hidden;
+            background-color: #f9fafb;
+            margin-bottom: 20px;
+        }
+
+        .input-grupo:focus-within {
+            border-color: #1351b4;
+            box-shadow: 0 0 0 2px rgba(19, 81, 180, 0.15);
+        }
+
+        .badge-cpf {
+            background-color: #e5e7eb;
+            padding: 12px 14px;
+            font-size: 13px;
+            font-weight: bold;
+            color: #4b5563;
+            border-right: 1px solid #d1d5db;
+        }
+
+        .input-grupo input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 12px 14px;
+            font-size: 16px;
+            background: transparent;
+            color: #111827;
+        }
+
+        .icone-info {
+            padding: 0 14px;
+            color: #1351b4;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        /* Botão Continuar */
+        .btn-continuar {
+            width: 100%;
+            background-color: #1351b4;
+            color: #ffffff;
+            border: none;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-continuar:hover {
+            background-color: #0c387d;
+        }
+
+        /* Links de Ajuda */
+        .links-ajuda {
+            margin-top: 24px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .links-ajuda a {
+            color: #1351b4;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .links-ajuda a:hover {
+            text-decoration: underline;
+        }
+
+        .links-ajuda p {
+            color: #4b5563;
+            margin-top: 12px;
+        }
+
+        /* --- OUTRAS FORMAS DE ENTRAR --- */
+        .titulo-outras {
+            font-size: 14px;
+            font-weight: 700;
+            color: #374151;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .btn-opcao {
+            width: 100%;
+            background-color: #ffffff;
+            color: #1f2937;
+            border: 1px solid #d1d5db;
+            padding: 14px 18px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 24px;
+            cursor: pointer;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+
+        .btn-opcao:hover {
+            background-color: #f3f4f6;
+            border-color: #9ca3af;
+        }
+
+        .btn-opcao span {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Faixa Superior (Header) -->
+    <header class="topo-gov">
+        <div class="container-topo">
+            <div class="logo">
+                <span class="logo-gov">gov</span><span class="logo-br">.br</span>
+            </div>
+            <nav class="menu-topo">
+                <a href="#" class="ativo">Início</a>
+                <a href="#">Serviços ▾</a>
+                <a href="#">Ajuda</a>
+                <a href="#" class="perfil-icone">👤 ▾</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="conteudo">
+        <div class="cartao-login">
+            
+            <h1>Entrar na sua conta gov.br</h1>
+            <p class="subtitulo">Acesse os serviços digitais do governo</p>
+
+            <!-- Layout de duas colunas -->
+            <div class="colunas-login">
+                
+                <!-- Coluna Esquerda: CPF -->
+                <div class="coluna-esquerda">
+                    <form>
+                        <label for="cpf">Digite seu CPF</label>
+                        <div class="input-grupo">
+                            <span class="badge-cpf">CPF</span>
+                            <input type="text" id="cpf" placeholder="000.000.000-00">
+                            <span class="icone-info">ℹ</span>
+                        </div>
+
+                        <button type="submit" class="btn-continuar">Continuar</button>
+                    </form>
+
+                    <div class="links-ajuda">
+                        <a href="#">Esqueceu sua senha?</a>
+                        <p>Não possui conta? <a href="#">Crie uma agora</a></p>
+                    </div>
+                </div>
+
+                <!-- Divisor Vertical -->
+                <div class="divisor"></div>
+
+                <!-- Coluna Direita: Outras Formas -->
+                <div class="coluna-direita">
+                    <span class="titulo-outras">Outras formas de entrar</span>
+                    
+                    <button class="btn-opcao">
+                        <span>🏛</span> Entrar com banco credenciado
+                    </button>
+                    
+                    <button class="btn-opcao">
+                        <span>📷</span> Entrar com QR Code (App)
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
